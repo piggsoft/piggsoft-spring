@@ -1,7 +1,7 @@
 # piggsoft-spring
 spring mvc maven archetype
 
-使用方法
+浣跨敤鏂规硶
 1. mvn archetype:create-from-project
 2. cd target/generated-sourced/archetype/
 3. mvn install
