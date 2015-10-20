@@ -1,5 +1,8 @@
 # piggsoft-spring
 spring mvc maven archetype
+Spring MVC maven 版本文件
+
+使用下面的命令，即可创建一个全新的带依赖，带部分配置的项目
 
 ####使用方法
 ````
