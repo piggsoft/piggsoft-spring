@@ -7,7 +7,7 @@ Spring MVC Maven 模板文件
 ####使用方法
 ````
 1. mvn archetype:create-from-project
-2. cd target/generated-sourced/archetype/
+2. cd target/generated-sources/archetype/
 3. mvn install
 4. mvn archetype:generate -DarchetypeCatalog=local
 ````
