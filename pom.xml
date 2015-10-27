@@ -1,19 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.piggsoft</groupId>
-    <artifactId>piggsoft-spring</artifactId>
+    <artifactId>baby</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>piggsoft-spring Maven Webapp</name>
+    <name>baby Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <spring.platform.version>1.1.3.RELEASE</spring.platform.version>
-        <org.aspectj-version>1.8.6</org.aspectj-version>
         <org.slf4j-version>1.7.12</org.slf4j-version>
-        <jackson-version>2.6.0</jackson-version>
-        <commons-lang3-version>3.4</commons-lang3-version>
         <mybatis-version>3.3.0</mybatis-version>
         <mybatis-spring-version>1.2.3</mybatis-spring-version>
         <druid-version>1.0.15</druid-version>
@@ -22,40 +19,19 @@
         <servlet-api-version>3.0.1</servlet-api-version>
         <jsp-api-version>2.1</jsp-api-version>
         <jstl-version>1.2</jstl-version>
-        <junit-version>4.12</junit-version>
         <log4j_version>1.2.16</log4j_version>
         <slf4j-log4j12-version>1.7.12</slf4j-log4j12-version>
         <page-helper-version>4.0.0</page-helper-version>
         <joda-time-version>2.8</joda-time-version>
-        <commons-beanutils-version>1.9.2</commons-beanutils-version>
-        <commons-fileupload-version>1.3.1</commons-fileupload-version>
+        <httpclient.version>4.5.1</httpclient.version>
+        <mybatis-generator.version>1.3.2</mybatis-generator.version>
+        <maven-archetype.version>2.4</maven-archetype.version>
     </properties>
 
     <dependencies>
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <exclusions>
-                <!-- Exclude Commons Logging in favor of SLF4j -->
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-        </dependency>
+
+
+
 
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -82,17 +58,17 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-version}</version>
         </dependency>
-        <!-- AspectJ -->
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${org.aspectj-version}</version>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time-version}</version>
         </dependency>
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>${org.aspectj-version}</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
         </dependency>
+
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -116,41 +92,81 @@
             <artifactId>log4j</artifactId>
             <version>${log4j_version}</version>
         </dependency>
+
+        <!--从 spring.platform 继承-->
         <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time-version}</version>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <exclusions>
+                <!-- Exclude Commons Logging in favor of SLF4j -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+
+        <!-- AspectJ -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3-version}</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>${commons-beanutils-version}</version>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>${commons-fileupload-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.3.4</version>
         </dependency>
         <!-- @Inject -->
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
-            <version>${javax.inject-version}</version>
         </dependency>
 
         <!-- Servlet -->
@@ -181,7 +197,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -204,7 +219,7 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <version>${mybatis-generator.version}</version>
                 <configuration>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
@@ -213,7 +228,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-archetype-plugin</artifactId>
-                <version>2.4</version>
+                <version>${maven-archetype.version}</version>
             </plugin>
         </plugins>
     </build>
